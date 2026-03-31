@@ -150,6 +150,88 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// ===== Gallery Slideshow =====
+const galleryTrack = document.getElementById('galleryTrack');
+const galleryPrev = document.getElementById('galleryPrev');
+const galleryNext = document.getElementById('galleryNext');
+const galleryDots = document.getElementById('galleryDots');
+
+if (galleryTrack) {
+  const slides = galleryTrack.querySelectorAll('.gallery__slide');
+  const isMobile = window.innerWidth <= 768;
+  const slidesPerView = isMobile ? 1 : 3;
+  const totalPages = Math.ceil(slides.length / slidesPerView);
+  let currentPage = 0;
+
+  // Create dots
+  for (let i = 0; i < totalPages; i++) {
+    const dot = document.createElement('button');
+    dot.className = `gallery__dot${i === 0 ? ' active' : ''}`;
+    dot.addEventListener('click', () => goToPage(i));
+    galleryDots.appendChild(dot);
+  }
+
+  function goToPage(page) {
+    currentPage = page;
+    const slideWidth = slides[0].offsetWidth + 20; // width + gap
+    galleryTrack.style.transform = `translateX(-${currentPage * slidesPerView * slideWidth}px)`;
+
+    // Update dots
+    galleryDots.querySelectorAll('.gallery__dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentPage);
+    });
+
+    // Play video if visible
+    slides.forEach((slide, i) => {
+      const video = slide.querySelector('video');
+      if (!video) return;
+      const visibleStart = currentPage * slidesPerView;
+      const visibleEnd = visibleStart + slidesPerView;
+      if (i >= visibleStart && i < visibleEnd) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }
+
+  galleryNext.addEventListener('click', () => {
+    goToPage((currentPage + 1) % totalPages);
+  });
+
+  galleryPrev.addEventListener('click', () => {
+    goToPage((currentPage - 1 + totalPages) % totalPages);
+  });
+
+  // Auto-advance every 5 seconds
+  let galleryInterval = setInterval(() => {
+    goToPage((currentPage + 1) % totalPages);
+  }, 5000);
+
+  // Pause auto-advance on hover
+  galleryTrack.addEventListener('mouseenter', () => clearInterval(galleryInterval));
+  galleryTrack.addEventListener('mouseleave', () => {
+    galleryInterval = setInterval(() => {
+      goToPage((currentPage + 1) % totalPages);
+    }, 5000);
+  });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  galleryTrack.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    clearInterval(galleryInterval);
+  });
+
+  galleryTrack.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToPage((currentPage + 1) % totalPages);
+      else goToPage((currentPage - 1 + totalPages) % totalPages);
+    }
+  });
+}
+
 // ===== AI Chat Widget =====
 const chatResponses = {
   pricing: `Here's our pricing:\n\n<strong>Private Sessions:</strong>\n- Intro: $50\n- Single: $75\n- 4-Pack: $292\n- 8-Pack: $568\n\n<strong>Duet Sessions:</strong>\n- Intro: $49\n- Single: $55\n- 4-Pack: $192\n- 8-Pack: $372\n\n<strong>Equipment Classes:</strong>\n- Drop-in: $35\n- 4-Pack: $136\n- 8-Pack: $256\n\nAll 4-packs expire 1 month from first class. 8-packs expire 45 days.`,

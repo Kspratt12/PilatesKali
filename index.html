@@ -259,30 +259,51 @@
         <h2 class="section-title">Our <em>Studio</em></h2>
         <p class="section-desc">Featuring comprehensive Pilates equipment to help you attain your fitness goals.</p>
       </div>
-      <div class="studio__grid">
-        <div class="studio__card">
-          <img src="public/door.png" alt="Studio equipment room with ladder barrel and reformer" loading="lazy" />
-          <div class="studio__card-inner">
-            <h4>The Studio</h4>
+      <div class="gallery">
+        <div class="gallery__track" id="galleryTrack">
+          <div class="gallery__slide">
+            <img src="public/door.png" alt="Studio equipment room" loading="lazy" />
+            <span>The Studio</span>
+          </div>
+          <div class="gallery__slide">
+            <img src="public/nice.png" alt="Group reformer class" loading="lazy" />
+            <span>Group Classes</span>
+          </div>
+          <div class="gallery__slide">
+            <img src="public/legs.png" alt="Duet reformer session" loading="lazy" />
+            <span>Duet Session</span>
+          </div>
+          <div class="gallery__slide">
+            <img src="public/bending.png" alt="Reformer exercise" loading="lazy" />
+            <span>Reformer Work</span>
+          </div>
+          <div class="gallery__slide">
+            <img src="public/exercise.png" alt="Wunda Chair exercise" loading="lazy" />
+            <span>Wunda Chair</span>
+          </div>
+          <div class="gallery__slide">
+            <img src="public/sideways.png" alt="Group class in session" loading="lazy" />
+            <span>Class in Action</span>
+          </div>
+          <div class="gallery__slide">
+            <img src="public/purple.png" alt="Reformer session" loading="lazy" />
+            <span>Reformer</span>
+          </div>
+          <div class="gallery__slide gallery__slide--video">
+            <video muted playsinline loop>
+              <source src="public/reel.mp4" type="video/mp4" />
+            </video>
+            <span>In Motion</span>
           </div>
         </div>
-        <div class="studio__card">
-          <img src="public/nice.png" alt="Group reformer class in session" loading="lazy" />
-          <div class="studio__card-inner">
-            <h4>Group Classes</h4>
-          </div>
-        </div>
-        <div class="studio__card">
-          <img src="public/exercise.png" alt="Wunda Chair exercise" loading="lazy" />
-          <div class="studio__card-inner">
-            <h4>Wunda Chair</h4>
-          </div>
-        </div>
-        <div class="studio__card">
-          <img src="public/purple.png" alt="Reformer session" loading="lazy" />
-          <div class="studio__card-inner">
-            <h4>Reformer</h4>
-          </div>
+        <div class="gallery__controls">
+          <button class="gallery__btn gallery__btn--prev" id="galleryPrev" aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="gallery__dots" id="galleryDots"></div>
+          <button class="gallery__btn gallery__btn--next" id="galleryNext" aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
     </div>
