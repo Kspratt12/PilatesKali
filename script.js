@@ -1,7 +1,16 @@
 // ===== Hero Video Crossfade =====
 const heroVideos = document.querySelectorAll('.hero__video');
+const heroPoster = document.querySelector('.hero__poster');
 let currentVideo = 0;
 let isTransitioning = false;
+
+// Hide poster once first video starts playing
+if (heroVideos[0] && heroPoster) {
+  heroVideos[0].addEventListener('playing', () => {
+    heroVideos[0].classList.add('active');
+    heroPoster.classList.add('hidden');
+  }, { once: true });
+}
 
 function rotateVideo() {
   if (isTransitioning) return;
