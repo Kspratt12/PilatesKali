@@ -1,3 +1,38 @@
+// ===== Hero Video Crossfade =====
+const heroVideos = document.querySelectorAll('.hero__video');
+let currentVideo = 0;
+
+function rotateVideo() {
+  const current = heroVideos[currentVideo];
+  currentVideo = (currentVideo + 1) % heroVideos.length;
+  const next = heroVideos[currentVideo];
+
+  // Start playing next video before fade
+  next.currentTime = 0;
+  next.play().catch(() => {});
+
+  // Crossfade
+  next.classList.add('active');
+  current.classList.remove('active');
+
+  // Pause old video after fade completes
+  setTimeout(() => {
+    current.pause();
+  }, 1300);
+}
+
+if (heroVideos.length > 1) {
+  heroVideos[0].addEventListener('ended', rotateVideo);
+  heroVideos.forEach((video, i) => {
+    if (i > 0) video.addEventListener('ended', rotateVideo);
+  });
+
+  // Fallback: if video doesn't fire ended event, rotate every 8 seconds
+  setInterval(() => {
+    rotateVideo();
+  }, 8000);
+}
+
 // Navigation scroll effect
 const nav = document.getElementById('nav');
 

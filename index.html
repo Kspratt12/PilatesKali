@@ -43,8 +43,17 @@
   <!-- Hero -->
   <header class="hero">
     <div class="hero__bg">
-      <video autoplay muted loop playsinline poster="public/hero.png">
+      <video class="hero__video active" autoplay muted playsinline poster="public/hero.png">
         <source src="public/video1.mp4" type="video/mp4" />
+      </video>
+      <video class="hero__video" muted playsinline>
+        <source src="public/video2.mp4" type="video/mp4" />
+      </video>
+      <video class="hero__video" muted playsinline>
+        <source src="public/video3.mp4" type="video/mp4" />
+      </video>
+      <video class="hero__video" muted playsinline>
+        <source src="public/video4.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="hero__overlay"></div>
@@ -254,7 +263,7 @@
       </div>
       <div class="studio__grid">
         <div class="studio__card">
-          <img src="public/hero.png" alt="Full studio view with reformers and cadillac" loading="lazy" />
+          <img src="public/door.png" alt="Studio equipment room with ladder barrel and reformer" loading="lazy" />
           <div class="studio__card-inner">
             <h4>The Studio</h4>
           </div>
@@ -281,10 +290,27 @@
     </div>
   </section>
 
+  <!-- Community -->
+  <section class="community">
+    <div class="container">
+      <div class="community__grid">
+        <div class="community__image">
+          <img src="public/family.png" alt="Salem Street Pilates community celebrating together" loading="lazy" />
+        </div>
+        <div class="community__content">
+          <p class="section-tag">Our Community</p>
+          <h2 class="section-title">More than a <em>Studio</em></h2>
+          <p>At Salem Street Pilates, we're a family. From your very first session, you'll feel the warmth and support that makes our studio special. Come for the Pilates, stay for the community.</p>
+          <a href="https://clients.mindbodyonline.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Join Us Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Banner -->
   <section class="cta">
     <div class="cta__bg">
-      <img src="public/blackandwhite.png" alt="Pilates in action" loading="lazy" />
+      <img src="public/back.png" alt="Kali on the reformer" loading="lazy" />
     </div>
     <div class="container">
       <div class="cta__inner">
