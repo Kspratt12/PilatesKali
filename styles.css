@@ -279,7 +279,7 @@ em {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(250, 245, 248, 0.75) 0%, rgba(240, 220, 237, 0.6) 50%, rgba(250, 245, 248, 0.75) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.35) 40%, rgba(0, 0, 0, 0.3) 100%);
   z-index: 1;
 }
 
@@ -314,22 +314,26 @@ em {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 700;
-  color: var(--orange);
+  color: var(--white);
   line-height: 1.05;
   margin-bottom: 24px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .hero__title span {
+  color: var(--orange);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   font-size: clamp(4rem, 9vw, 7rem);
   display: block;
 }
 
 .hero__subtitle {
   font-size: 1.1rem;
-  color: var(--gray-700);
+  color: var(--white);
   max-width: 560px;
   margin: 0 auto 36px;
   line-height: 1.8;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero__actions {
@@ -340,12 +344,13 @@ em {
 }
 
 .hero__actions .btn--outline {
-  color: var(--orange);
-  border-color: var(--orange);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 .hero__actions .btn--outline:hover {
-  background: rgba(242, 106, 41, 0.08);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--white);
 }
 
 .hero__scroll {
@@ -609,25 +614,25 @@ em {
 
 .pricing-card__intro {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--lavender-light);
-  padding: 16px 20px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 20px;
-}
-
-.pricing-card__intro-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--gray-700);
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .pricing-card__intro-price {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  color: var(--orange);
+  color: var(--lavender);
+  line-height: 1;
+}
+
+.pricing-card__intro-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-700);
 }
 
 .pricing-card__list {
