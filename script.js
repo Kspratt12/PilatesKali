@@ -26,6 +26,14 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+    navLinks.classList.remove('active');
+    navToggle.classList.remove('active');
+  }
+});
+
 // Scroll animations
 const observerOptions = {
   threshold: 0.1,
@@ -41,7 +49,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Add fade-in class to sections
-document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__map, .cta__inner, .section-header').forEach(el => {
+document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__visual, .cta__inner, .section-header, .location__content, .location__map').forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
@@ -60,6 +68,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.querySelectorAll('a:not(.btn)').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
     }
   });
 });
