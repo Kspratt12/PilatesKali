@@ -1,13 +1,17 @@
 // ===== Hero Video Crossfade =====
 const heroVideos = document.querySelectorAll('.hero__video');
 let currentVideo = 0;
+let isTransitioning = false;
 
 function rotateVideo() {
-  const current = heroVideos[currentVideo];
-  currentVideo = (currentVideo + 1) % heroVideos.length;
-  const next = heroVideos[currentVideo];
+  if (isTransitioning) return;
+  isTransitioning = true;
 
-  // Start playing next video before fade
+  const current = heroVideos[currentVideo];
+  const nextIndex = (currentVideo + 1) % heroVideos.length;
+  const next = heroVideos[nextIndex];
+
+  // Preload and play next video from start
   next.currentTime = 0;
   next.play().catch(() => {});
 
@@ -15,22 +19,28 @@ function rotateVideo() {
   next.classList.add('active');
   current.classList.remove('active');
 
-  // Pause old video after fade completes
+  // After transition completes, pause old and reset state
   setTimeout(() => {
     current.pause();
-  }, 1300);
+    current.currentTime = 0;
+    currentVideo = nextIndex;
+    isTransitioning = false;
+  }, 1600);
 }
 
 if (heroVideos.length > 1) {
-  heroVideos[0].addEventListener('ended', rotateVideo);
-  heroVideos.forEach((video, i) => {
-    if (i > 0) video.addEventListener('ended', rotateVideo);
+  // When each video ends naturally, rotate to next
+  heroVideos.forEach(video => {
+    video.addEventListener('ended', () => {
+      rotateVideo();
+    });
   });
 
-  // Fallback: if video doesn't fire ended event, rotate every 8 seconds
-  setInterval(() => {
-    rotateVideo();
-  }, 8000);
+  // On mobile some browsers won't autoplay - force first video
+  heroVideos[0].play().catch(() => {
+    // If autoplay blocked, fall back to poster image and use interval
+    setInterval(rotateVideo, 6000);
+  });
 }
 
 // Navigation scroll effect
