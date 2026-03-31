@@ -11,7 +11,13 @@ function rotateVideo() {
   const nextIndex = (currentVideo + 1) % heroVideos.length;
   const next = heroVideos[nextIndex];
 
-  // Preload and play next video from start
+  // Lazy load video source if not loaded yet
+  if (!next.src && next.dataset.src) {
+    next.src = next.dataset.src;
+    next.load();
+  }
+
+  // Play next video from start
   next.currentTime = 0;
   next.play().catch(() => {});
 
@@ -149,7 +155,7 @@ const chatResponses = {
 
   book: `Booking is easy! You can:\n\n1. <strong>Book online</strong> through our MindBody page - click "Book a Class" at the top of this page\n2. <strong>Call us</strong> at 303-842-1630\n3. <strong>Email</strong> SalemStPilates@gmail.com\n\nWe recommend starting with an Intro Session ($49-$50) to get the full experience!`,
 
-  hours: `For the most up-to-date schedule, please check our MindBody booking page or give us a call at 303-842-1630. You can also reach us at SalemStPilates@gmail.com!`,
+  hours: `Here are our studio hours:\n\n<strong>Monday:</strong> 8 AM - 6:30 PM\n<strong>Tuesday:</strong> 8 AM - 6:30 PM\n<strong>Wednesday:</strong> 8 AM - 6:30 PM\n<strong>Thursday:</strong> 8 AM - 6:30 PM\n<strong>Friday:</strong> 8 AM - 6:30 PM\n<strong>Saturday:</strong> 9 AM - 1 PM\n<strong>Sunday:</strong> Closed\n\nYou can book through our MindBody page or call us at 303-842-1630!`,
 
   about: `Hi! I'm Kali, the owner and instructor at Salem Street Pilates.\n\nI'm a comprehensive Nationally Certified Pilates instructor specializing in Mat, Reformer, Cadillac, Wunda Chair, Ladder Barrel and small equipment.\n\nAs a classical ballet dancer and dance instructor, my understanding of body movement has played a vital role in my teaching. I believe Pilates is for everyone!`,
 

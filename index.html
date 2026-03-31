@@ -46,15 +46,9 @@
       <video class="hero__video active" autoplay muted playsinline poster="public/hero.png">
         <source src="public/video1.mp4" type="video/mp4" />
       </video>
-      <video class="hero__video" muted playsinline>
-        <source src="public/video2.mp4" type="video/mp4" />
-      </video>
-      <video class="hero__video" muted playsinline>
-        <source src="public/video3.mp4" type="video/mp4" />
-      </video>
-      <video class="hero__video" muted playsinline>
-        <source src="public/video4.mp4" type="video/mp4" />
-      </video>
+      <video class="hero__video" muted playsinline preload="none" data-src="public/video2.mp4"></video>
+      <video class="hero__video" muted playsinline preload="none" data-src="public/video3.mp4"></video>
+      <video class="hero__video" muted playsinline preload="none" data-src="public/video4.mp4"></video>
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
@@ -406,6 +400,7 @@
         <button class="chat__suggestion" data-q="intro">Do you offer intro sessions?</button>
         <button class="chat__suggestion" data-q="equipment">What equipment do you have?</button>
         <button class="chat__suggestion" data-q="book">How do I book?</button>
+        <button class="chat__suggestion" data-q="hours">What are your hours?</button>
       </div>
       <div class="chat__input">
         <input type="text" id="chatInput" placeholder="Ask me anything..." />
