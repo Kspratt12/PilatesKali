@@ -1170,39 +1170,116 @@ a.contact-card:hover {
 
 /* ===== Footer ===== */
 .footer {
-  padding: 40px 0;
-  background: var(--lavender-light);
-  border-top: 3px solid var(--orange);
+  padding: 60px 0 0;
+  background: var(--dark);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.footer__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__col h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 16px;
 }
 
 .footer__logo-img {
-  height: 40px;
+  height: 50px;
   width: auto;
+  margin-bottom: 12px;
 }
 
-.footer__copy {
-  font-size: 0.8rem;
-  color: var(--gray-400);
+.footer__tagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 .footer__social {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .footer__social a {
-  color: var(--gray-400);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
   transition: var(--transition);
 }
 
 .footer__social a:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.footer__links,
+.footer__hours,
+.footer__contact {
+  list-style: none;
+}
+
+.footer__links li {
+  margin-bottom: 8px;
+}
+
+.footer__links a {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition);
+}
+
+.footer__links a:hover {
   color: var(--orange);
+}
+
+.footer__hours li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer__hours li span:last-child {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.footer__contact li {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.footer__contact a {
+  color: var(--orange);
+  transition: var(--transition);
+}
+
+.footer__contact a:hover {
+  text-decoration: underline;
+}
+
+.footer__bottom {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer__bottom p {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 @keyframes chatBounce {
@@ -1320,10 +1397,9 @@ a.contact-card:hover {
     margin: 0 auto;
   }
 
-  .footer__inner {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 
   .contact__cards {
