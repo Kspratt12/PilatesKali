@@ -48,13 +48,11 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Add fade-in class to sections
-document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__visual, .cta__inner, .section-header, .location__content, .location__map').forEach(el => {
+document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__map, .cta__inner, .section-header, .location__content, .location__image, .contact__top').forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
 
-// Stagger animation for grid items
 document.querySelectorAll('.services__grid, .pricing__grid, .studio__grid').forEach(grid => {
   grid.querySelectorAll('.fade-in').forEach((item, index) => {
     item.style.transitionDelay = `${index * 0.1}s`;
@@ -91,3 +89,115 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+// ===== AI Chat Widget =====
+const chatResponses = {
+  pricing: `Here's our pricing:\n\n<strong>Private Sessions:</strong>\n- Intro: $50\n- Single: $75\n- 4-Pack: $292\n- 8-Pack: $568\n\n<strong>Duet Sessions:</strong>\n- Intro: $49\n- Single: $55\n- 4-Pack: $192\n- 8-Pack: $372\n\n<strong>Equipment Classes:</strong>\n- Drop-in: $35\n- 4-Pack: $136\n- 8-Pack: $256\n\nAll 4-packs expire 1 month from first class. 8-packs expire 45 days.`,
+
+  services: `We offer several types of Pilates training:\n\n<strong>Private Sessions</strong> - One-on-one personalized instruction tailored to your goals.\n\n<strong>Duet Sessions</strong> - Train with a partner or friend for semi-private instruction.\n\n<strong>Equipment Classes</strong> - Small group classes using our full range of equipment.\n\n<strong>Mat Pilates</strong> - Classic mat work for core strength and flexibility.\n\nAll sessions are taught by Kali, a nationally certified Pilates instructor!`,
+
+  location: `We're located in <strong>Downtown Apex, NC</strong>!\n\n<strong>Address:</strong> 309 N Salem St, Apex, NC 27502\n\n<strong>Parking:</strong> 3 spots behind our building, plus plenty of additional parking off of Templeton Street.\n\nWe'd love to see you at the studio!`,
+
+  intro: `Yes! We offer intro sessions for new clients:\n\n- <strong>Intro Private Session:</strong> $50 (regularly $75)\n- <strong>Intro Duet Session:</strong> $49 (regularly $55)\n\nIt's the perfect way to experience Salem Street Pilates and see what we're all about. You can book directly through our MindBody page!`,
+
+  equipment: `Our studio features comprehensive Pilates equipment:\n\n- <strong>Reformer</strong> - Versatile and effective for all levels\n- <strong>Cadillac</strong> - Full trapeze table for deep stretching\n- <strong>Wunda Chair</strong> - Great for balance and coordination\n- <strong>Ladder Barrel</strong> - Perfect for spinal articulation\n- <strong>Mat</strong> - Classic Pilates foundation\n- Plus various small equipment\n\nKali is certified in all of these modalities!`,
+
+  book: `Booking is easy! You can:\n\n1. <strong>Book online</strong> through our MindBody page - click "Book a Class" at the top of this page\n2. <strong>Call us</strong> at 303-842-1630\n3. <strong>Email</strong> SalemStPilates@gmail.com\n\nWe recommend starting with an Intro Session ($49-$50) to get the full experience!`,
+
+  hours: `For the most up-to-date schedule, please check our MindBody booking page or give us a call at 303-842-1630. You can also reach us at SalemStPilates@gmail.com!`,
+
+  about: `Hi! I'm Kali, the owner and instructor at Salem Street Pilates.\n\nI'm a comprehensive Nationally Certified Pilates instructor specializing in Mat, Reformer, Cadillac, Wunda Chair, Ladder Barrel and small equipment.\n\nAs a classical ballet dancer and dance instructor, my understanding of body movement has played a vital role in my teaching. I believe Pilates is for everyone!`,
+
+  default: `Great question! Here's what I can help you with:\n\n- Pricing information\n- Our services and class types\n- Studio location and parking\n- Intro session details\n- Equipment we use\n- How to book\n\nFeel free to ask about any of these, or contact us directly at 303-842-1630!`
+};
+
+function matchResponse(input) {
+  const lower = input.toLowerCase();
+
+  if (lower.match(/pric|cost|how much|rate|fee|package|pack/)) return chatResponses.pricing;
+  if (lower.match(/service|offer|class|type|what do you/)) return chatResponses.services;
+  if (lower.match(/where|location|address|directions|parking|find you|downtown/)) return chatResponses.location;
+  if (lower.match(/intro|first time|beginner|new client|try|start/)) return chatResponses.intro;
+  if (lower.match(/equipment|reformer|cadillac|chair|barrel|machine/)) return chatResponses.equipment;
+  if (lower.match(/book|schedule|appointment|reserve|sign up|register/)) return chatResponses.book;
+  if (lower.match(/hour|open|close|when|time|schedule/)) return chatResponses.hours;
+  if (lower.match(/about|kali|instructor|teacher|who|owner|background/)) return chatResponses.about;
+  if (lower.match(/hi|hello|hey|good morning|good afternoon/)) return `Hello! Welcome to Salem Street Pilates! How can I help you today? You can ask me about our services, pricing, location, or how to book your first session!`;
+  if (lower.match(/thank|thanks/)) return `You're welcome! If you have any other questions, feel free to ask. We'd love to see you at the studio!`;
+
+  return chatResponses.default;
+}
+
+const chat = document.getElementById('chat');
+const chatToggle = document.getElementById('chatToggle');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+const chatSuggestions = document.getElementById('chatSuggestions');
+
+chatToggle.addEventListener('click', () => {
+  chat.classList.toggle('active');
+  if (chat.classList.contains('active')) {
+    chatInput.focus();
+  }
+});
+
+function addMessage(text, type) {
+  const msg = document.createElement('div');
+  msg.className = `chat__message chat__message--${type}`;
+  msg.innerHTML = `<p>${text}</p>`;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTyping() {
+  const typing = document.createElement('div');
+  typing.className = 'chat__message chat__message--typing';
+  typing.id = 'typingIndicator';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  chatMessages.appendChild(typing);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTyping() {
+  const typing = document.getElementById('typingIndicator');
+  if (typing) typing.remove();
+}
+
+function handleSend(text) {
+  if (!text.trim()) return;
+
+  addMessage(text, 'user');
+  chatInput.value = '';
+  chatSuggestions.style.display = 'none';
+
+  showTyping();
+
+  // Simulate AI thinking delay
+  setTimeout(() => {
+    removeTyping();
+    const response = matchResponse(text);
+    addMessage(response.replace(/\n/g, '<br>'), 'bot');
+  }, 800 + Math.random() * 600);
+}
+
+chatSend.addEventListener('click', () => handleSend(chatInput.value));
+chatInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') handleSend(chatInput.value);
+});
+
+// Suggestion buttons
+document.querySelectorAll('.chat__suggestion').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const question = btn.textContent;
+    handleSend(question);
+  });
+});
+
+// Auto-open chat after 5 seconds with a bounce
+setTimeout(() => {
+  if (!chat.classList.contains('active')) {
+    chatToggle.style.animation = 'chatBounce 0.6s ease';
+    setTimeout(() => chatToggle.style.animation = '', 600);
+  }
+}, 5000);
