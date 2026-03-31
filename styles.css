@@ -671,25 +671,29 @@ em {
 
 .pricing-card__intro {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--gray-200);
+  padding: 20px;
+  background: linear-gradient(135deg, var(--lavender-light), rgba(230, 201, 225, 0.4));
+  border-radius: 12px;
+  border-left: 4px solid var(--orange);
 }
 
 .pricing-card__intro-price {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  color: var(--purple);
+  color: var(--orange);
   line-height: 1;
 }
 
 .pricing-card__intro-label {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--gray-700);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .pricing-card__list {
