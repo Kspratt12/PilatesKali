@@ -1389,35 +1389,74 @@ a.contact-card:hover {
   background: var(--white);
 }
 
-.reviews__badge {
-  text-align: center;
-  max-width: 480px;
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 48px 40px;
-  background: var(--cream);
-  border-radius: 20px;
-  border: 1px solid rgba(196, 153, 108, 0.15);
 }
 
-.reviews__stars {
+.reviews__card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid rgba(196, 153, 108, 0.12);
   display: flex;
-  justify-content: center;
-  gap: 4px;
+  flex-direction: column;
+}
+
+.reviews__card-stars {
+  display: flex;
+  gap: 2px;
   margin-bottom: 16px;
 }
 
-.reviews__rating {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
+.reviews__card-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: var(--charcoal);
-  margin-bottom: 4px;
+  font-style: italic;
+  flex: 1;
+  margin-bottom: 16px;
 }
 
-.reviews__count {
-  font-size: 0.95rem;
+.reviews__card-author {
+  font-size: 0.8rem;
   color: var(--taupe);
-  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.reviews__card--cta {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--charcoal);
+}
+
+.reviews__google {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.reviews__google-rating {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.reviews__google-count {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+.reviews__card--cta .reviews__card-stars {
+  margin-bottom: 4px;
 }
 
 .reviews__btn {
@@ -1519,6 +1558,11 @@ a.contact-card:hover {
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
   .services__grid,
   .studio__grid {
     grid-template-columns: repeat(2, 1fr);
