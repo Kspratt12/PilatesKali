@@ -22,6 +22,8 @@
   --gray-700: #5a4a5a;
   --gray-400: #998a99;
   --gray-200: #e8dce6;
+  --charcoal: #2d2d2d;
+  --taupe: #8a7a7a;
   --white: #ffffff;
   --radius: 16px;
   --radius-sm: 8px;
@@ -1577,9 +1579,15 @@ a.contact-card:hover {
 
 .schedule__table-wrap {
   overflow-x: auto;
+  overflow-y: visible;
   border-radius: 16px;
   border: 1px solid rgba(196, 153, 108, 0.15);
   -webkit-overflow-scrolling: touch;
+}
+
+.schedule__table thead th {
+  position: sticky;
+  top: 0;
 }
 
 .schedule__table {
