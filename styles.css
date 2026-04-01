@@ -851,7 +851,8 @@ em {
 /* ===== Community ===== */
 .community {
   padding: 100px 0;
-  background: var(--white);
+  background: var(--cream);
+  position: relative;
 }
 
 .community__grid {
@@ -861,10 +862,29 @@ em {
   align-items: center;
 }
 
+.community__image {
+  position: relative;
+}
+
+.community__image::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  border: 2px solid var(--orange);
+  opacity: 0.3;
+  z-index: 0;
+}
+
 .community__image img {
   width: 100%;
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .community__content p {
@@ -1386,83 +1406,124 @@ a.contact-card:hover {
 /* ===== Reviews ===== */
 .reviews {
   padding: 80px 0;
-  background: var(--white);
+  background: var(--charcoal);
+}
+
+.reviews .section-tag {
+  color: var(--orange);
+}
+
+.reviews .section-title {
+  color: var(--white);
+}
+
+.reviews .section-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.reviews__summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.reviews__summary-rating {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.reviews__summary-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.reviews__summary-count {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .reviews__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 960px;
+  gap: 20px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .reviews__card {
-  background: var(--cream);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
-  padding: 32px 28px;
-  border: 1px solid rgba(196, 153, 108, 0.12);
+  padding: 28px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.reviews__card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.reviews__card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.reviews__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.reviews__card-name {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.9rem;
+  margin-bottom: 2px;
 }
 
 .reviews__card-stars {
   display: flex;
-  gap: 2px;
-  margin-bottom: 16px;
+  gap: 1px;
 }
 
 .reviews__card-text {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.7;
-  color: var(--charcoal);
-  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
   flex: 1;
-  margin-bottom: 16px;
 }
 
-.reviews__card-author {
-  font-size: 0.8rem;
-  color: var(--taupe);
-  font-weight: 500;
-}
-
-.reviews__card--cta {
-  align-items: center;
-  justify-content: center;
+.reviews__cta {
   text-align: center;
-  background: var(--charcoal);
-}
-
-.reviews__google {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.reviews__google-rating {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-}
-
-.reviews__google-count {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 2px;
-}
-
-.reviews__card--cta .reviews__card-stars {
-  margin-bottom: 4px;
+  margin-top: 40px;
 }
 
 .reviews__btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reviews__btn:hover {
+  border-color: var(--orange);
 }
 
 /* ===== Lightbox ===== */
@@ -1559,8 +1620,7 @@ a.contact-card:hover {
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
   .reviews__grid {
-    grid-template-columns: 1fr;
-    max-width: 480px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .services__grid,
@@ -1574,6 +1634,12 @@ a.contact-card:hover {
 }
 
 @media (max-width: 768px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
   .nav__toggle {
     display: flex;
   }
