@@ -1665,6 +1665,25 @@ a.contact-card:hover {
   color: #3d6b53;
 }
 
+a.schedule__class {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.schedule__class:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.schedule__note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--taupe);
+  margin-top: 16px;
+  font-style: italic;
+}
+
 .schedule__legend {
   display: flex;
   justify-content: center;
