@@ -807,6 +807,11 @@ em {
   grid-row: span 2;
 }
 
+/* Video spans 3 rows for vertical feel */
+.gallery__item--video {
+  grid-row: span 3;
+}
+
 /* Mute toggle */
 .gallery__mute {
   position: absolute;
