@@ -13,10 +13,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="public/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Salem Street Pilates",
+    "description": "Boutique Pilates studio in Downtown Apex, NC offering private sessions, duets, and small group equipment classes.",
+    "image": "https://pilates-kali.vercel.app/public/logo.png",
+    "url": "https://pilates-kali.vercel.app",
+    "telephone": "+1-303-842-1630",
+    "email": "SalemStPilates@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "309 N Salem St",
+      "addressLocality": "Apex",
+      "addressRegion": "NC",
+      "postalCode": "27502",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.7322,
+      "longitude": -78.8528
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "14"
+    },
+    "priceRange": "$35-$75",
+    "sameAs": ["https://instagram.com/salemstpilates"]
+  }
+  </script>
   <link rel="apple-touch-icon" href="public/logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Promo Banner -->
+  <div class="promo" id="promo">
+    <p>New to Salem St. Pilates? <a href="https://www.mindbodyonline.com/explore/locations/salem-st-pilates" target="_blank" rel="noopener noreferrer">Book your intro session - starting at $35</a></p>
+    <button class="promo__close" id="promoClose" aria-label="Close banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav__container">
@@ -313,6 +357,72 @@
           <h2 class="section-title">More than a <em>Studio</em></h2>
           <p>At Salem Street Pilates, we're a family. From your very first session, you'll feel the warmth and support that makes our studio special. Come for the Pilates, stay for the community.</p>
           <a href="https://www.mindbodyonline.com/explore/locations/salem-st-pilates" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Join Us Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Common Questions</p>
+        <h2 class="section-title">Frequently <em>Asked</em></h2>
+      </div>
+      <div class="faq__grid">
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>Do I need Pilates experience to start?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Not at all! We welcome complete beginners. Our intro sessions are specifically designed to teach you the fundamentals in a supportive, pressure-free environment. Kali will guide you through every movement.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>What should I wear to class?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Comfortable, form-fitting clothing works best so your instructor can see your alignment. Grip socks are recommended for equipment classes. Avoid loose or baggy clothing that can get caught in the equipment.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>How many people are in a class?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>We keep our classes intentionally small - typically 4 to 6 people - so you get personalized attention and form corrections in every session. It's one of the things that makes our studio special.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>What is your cancellation policy?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>We ask for at least 12 hours notice for cancellations. Late cancellations or no-shows will forfeit the session from your package. We understand life happens - just give us a heads up when you can!</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>What equipment do you have?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Our studio features Reformers, Cadillac/Trapeze Table, Wunda Chair, Ladder Barrel, Spine Corrector, and a variety of small props. We have everything needed for a comprehensive Pilates practice.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">
+            <span>Do packages expire?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes - 4-packs expire 1 month from the date of your first class, and 8-packs expire 45 days from your first class. This helps ensure consistency in your practice for the best results.</p>
+          </div>
         </div>
       </div>
     </div>

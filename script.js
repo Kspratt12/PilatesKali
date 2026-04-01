@@ -108,7 +108,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__map, .cta__inner, .section-header, .location__content, .location__image, .contact__top').forEach(el => {
+document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__map, .cta__inner, .section-header, .location__content, .location__image, .contact__top, .community__image, .community__content, .faq__item, .gallery__item').forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
@@ -117,6 +117,16 @@ document.querySelectorAll('.services__grid, .pricing__grid, .studio__grid').forE
   grid.querySelectorAll('.fade-in').forEach((item, index) => {
     item.style.transitionDelay = `${index * 0.1}s`;
   });
+});
+
+// Stagger gallery items
+document.querySelectorAll('.gallery__item.fade-in').forEach((item, index) => {
+  item.style.transitionDelay = `${index * 0.08}s`;
+});
+
+// Stagger FAQ items
+document.querySelectorAll('.faq__item.fade-in').forEach((item, index) => {
+  item.style.transitionDelay = `${index * 0.08}s`;
 });
 
 // Smooth scroll for anchor links
@@ -378,3 +388,28 @@ setTimeout(() => {
     if (e.key === 'ArrowRight') showItem((currentIndex + 1) % items.length);
   });
 })();
+
+// ===== FAQ Accordion =====
+document.querySelectorAll('.faq__question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    // Close all
+    document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('active'));
+    // Open clicked (if it wasn't already open)
+    if (!isActive) item.classList.add('active');
+  });
+});
+
+// ===== Promo Banner =====
+const promoClose = document.getElementById('promoClose');
+const promo = document.getElementById('promo');
+if (promoClose && promo) {
+  promoClose.addEventListener('click', () => {
+    promo.classList.add('hidden');
+    sessionStorage.setItem('promoHidden', '1');
+  });
+  if (sessionStorage.getItem('promoHidden')) {
+    promo.classList.add('hidden');
+  }
+}

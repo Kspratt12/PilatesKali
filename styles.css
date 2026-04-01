@@ -154,6 +154,49 @@ em {
   font-size: 0.85rem;
 }
 
+/* ===== Promo Banner ===== */
+.promo {
+  background: var(--charcoal);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 1001;
+}
+
+.promo a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.promo a:hover {
+  color: var(--orange-light);
+}
+
+.promo__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.promo__close:hover {
+  color: var(--white);
+}
+
+.promo.hidden {
+  display: none;
+}
+
 /* ===== Navigation ===== */
 .nav {
   position: fixed;
@@ -1443,6 +1486,84 @@ a.contact-card:hover {
   transform: translateY(0);
 }
 
+
+/* ===== FAQ ===== */
+.faq {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.faq__grid {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq__item {
+  border: 1px solid rgba(196, 153, 108, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faq__item:hover {
+  border-color: var(--orange);
+}
+
+.faq__item.active {
+  border-color: var(--orange);
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  text-align: left;
+  gap: 16px;
+  transition: color 0.2s ease;
+}
+
+.faq__question:hover {
+  color: var(--orange);
+}
+
+.faq__question svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--orange);
+}
+
+.faq__item.active .faq__question svg {
+  transform: rotate(45deg);
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq__answer p {
+  padding: 0 24px 20px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--taupe);
+}
+
+.faq__item.active .faq__answer {
+  max-height: 200px;
+}
 
 /* ===== Lightbox ===== */
 .lightbox {
