@@ -161,8 +161,20 @@ em {
   text-align: center;
   padding: 10px 20px;
   font-size: 0.85rem;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1001;
+}
+
+.promo + .nav {
+  top: 38px;
+  transition: top 0.3s ease, background 0.3s ease, padding 0.3s ease;
+}
+
+.promo.hidden + .nav {
+  top: 0;
 }
 
 .promo a {
