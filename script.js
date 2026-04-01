@@ -64,8 +64,10 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
     nav.classList.add('nav--scrolled');
+    if (promo && !promo.classList.contains('hidden')) promo.classList.add('scrolled');
   } else {
     nav.classList.remove('nav--scrolled');
+    if (promo) promo.classList.remove('scrolled');
   }
 });
 
@@ -108,7 +110,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__map, .cta__inner, .section-header, .location__content, .location__image, .contact__top, .community__image, .community__content, .faq__item, .gallery__item').forEach(el => {
+document.querySelectorAll('.about__content, .about__image, .service-card, .pricing-card, .studio__card, .contact__info, .contact__map, .cta__inner, .section-header, .location__content, .location__image, .contact__top, .community__image, .community__content, .faq__item, .gallery__item, .schedule__table-wrap, .schedule__legend, .schedule__cta, .instagram__text, .instagram__grid').forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
