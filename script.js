@@ -167,6 +167,17 @@ document.querySelectorAll('.gallery__item--video').forEach(item => {
   }, { threshold: 0.5 });
 
   vidObserver.observe(item);
+
+  // Mute toggle
+  const muteBtn = item.querySelector('.gallery__mute');
+  if (muteBtn) {
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      muteBtn.querySelector('.mute-icon').style.display = video.muted ? 'block' : 'none';
+      muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : 'block';
+    });
+  }
 });
 
 // ===== AI Chat Widget =====
