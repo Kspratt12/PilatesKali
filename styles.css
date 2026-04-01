@@ -1031,6 +1031,46 @@ a.contact-card:hover {
   font-family: 'DM Sans', sans-serif;
 }
 
+.chat__tooltip {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  background: var(--white);
+  color: var(--charcoal);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.chat__tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chat__tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 22px;
+  width: 12px;
+  height: 12px;
+  background: var(--white);
+  transform: rotate(45deg);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chat.active .chat__tooltip {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
 .chat__toggle {
   width: 60px;
   height: 60px;

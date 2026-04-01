@@ -284,13 +284,14 @@ document.querySelectorAll('.chat__suggestion').forEach(btn => {
   });
 });
 
-// Auto-open chat after 5 seconds with a bounce
+// Show tooltip after 3 seconds, hide after 8
+const chatTooltip = document.getElementById('chatTooltip');
 setTimeout(() => {
-  if (!chat.classList.contains('active')) {
-    chatToggle.style.animation = 'chatBounce 0.6s ease';
-    setTimeout(() => chatToggle.style.animation = '', 600);
+  if (!chat.classList.contains('active') && chatTooltip) {
+    chatTooltip.classList.add('visible');
+    setTimeout(() => chatTooltip.classList.remove('visible'), 5000);
   }
-}, 5000);
+}, 3000);
 
 // ===== Gallery Lightbox =====
 (function() {
